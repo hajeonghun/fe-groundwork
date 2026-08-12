@@ -11,6 +11,9 @@
 # 공개 계획이 있다면 아래 주석을 풀 것.
 # **/03-CASES.md
 
+# md에서 생성한 변환 결과물
+*.docx
+
 .DS_Store
 node_modules/
 

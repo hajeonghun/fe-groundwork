@@ -1,6 +1,6 @@
 # docs
 
-이 프로젝트의 근거가 되는 두 문서. **여기 있는 `.md`가 마스터다.**
+이 프로젝트의 근거가 되는 두 문서.
 
 | 파일 | 내용 |
 |------|------|
@@ -18,21 +18,19 @@
 | `02-SOURCES`에서 뭘 읽을지 | 학습맵의 각 주제 **"자료"** |
 | 방법이 헷갈릴 때 | 학습법 문서 |
 
-## Word 파일이 필요하면
+## Word로 보고 싶다면
 
-`.docx`는 `~/Documents/`에 있고, **md에서 생성한 산출물**이다.
-md를 고친 뒤 다시 만들려면:
+`md2docx.py`로 변환한다.
 
 ```bash
-cd docs
-python3 md2docx.py AI-활용-학습법.md ~/Documents/AI-활용-학습법.docx
-python3 md2docx.py 프론트엔드-기반지식-학습맵.md ~/Documents/프론트엔드-기반지식-학습맵.docx
+python3 md2docx.py <입력.md> <출력.docx>
 ```
 
-`md2docx.py`는 pandoc·LibreOffice 없이 표준 라이브러리만으로 docx를 만든다.
+pandoc·LibreOffice 없이 파이썬 표준 라이브러리만 쓴다.
 제목·표·코드블록·인용·체크박스·굵게·인라인코드를 지원하며, 다른 md 문서에도 그대로 쓸 수 있다.
 
-⚠️ **md를 고쳤으면 docx도 다시 만든다.** 안 그러면 둘이 갈라진다.
+변환 결과물은 추적하지 않는다(`.gitignore`). **md가 원본이고 docx는 사본**이므로,
+내용을 고칠 일이 있으면 항상 md를 고친다.
 
 ## 학습맵을 고칠 때
 
