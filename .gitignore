@@ -1,0 +1,19 @@
+# 회사 코드·도메인 정보가 들어갈 수 있는 파일
+# 레포를 공개하더라도 이 두 파일은 올라가지 않는다.
+**/05-APPLIED.md
+**/05-DECISIONS.md
+
+# 단, 템플릿 원본은 추적한다 (내용이 비어 있으므로 안전)
+!_template-experiment/05-APPLIED.md
+!_template-concept/05-DECISIONS.md
+
+# 실측 사례에도 사내 정보가 들어갈 수 있다.
+# 공개 계획이 있다면 아래 주석을 풀 것.
+# **/03-CASES.md
+
+.DS_Store
+node_modules/
+
+# IDE
+.idea/
+.vscode/
