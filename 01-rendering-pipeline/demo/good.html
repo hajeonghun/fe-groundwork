@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>렌더링 파이프라인 / 컴포지팅 — good</title>
+<!--
+  ┌─────────────────────────────────────────────────────────────┐
+  │ 작성 주체: 🧑 나                                             │
+  │                                                             │
+  │ ★ 이 파일을 AI에게 시키면 이 프로젝트의 의미가 사라진다.        │
+  │                                                             │
+  │ bad.html의 문제를 내가 직접 고친다.                            │
+  │ 막히면 답을 받지 말고 힌트만 요청한다:                          │
+  │                                                             │
+  │   "내가 이렇게 고쳐봤는데 수치가 안 변해.                       │
+  │    답을 알려주지 말고, 어디를 다시 봐야 할지만 알려줘."          │
+  │                                                             │
+  │ 고치고 나면 03-MEASUREMENTS.md에 예측 → 측정 → 해석 순으로 기록 │
+  └─────────────────────────────────────────────────────────────┘
+
+  bad.html과 달라진 점:
+  <!-- 무엇을 왜 바꿨는지 한 줄씩 -->
+
+  기대 효과와 그 근거:
+  <!-- "왜 이게 효과가 있는가"를 메커니즘 수준에서.
+       여기서 막히면 아직 이해 못 한 것이다 → 01-QUESTIONS.md로 -->
+-->
+<style>
+  body { font-family: system-ui, -apple-system, sans-serif; margin: 24px; line-height: 1.6; }
+  .panel { border: 1px solid #ddd; border-radius: 8px; padding: 16px; margin-bottom: 16px; }
+  button { padding: 8px 16px; font-size: 14px; cursor: pointer; }
+  #stage { margin-top: 16px; }
+  #log { font-family: ui-monospace, Menlo, monospace; font-size: 13px; white-space: pre-wrap; }
+</style>
+</head>
+<body>
+
+<h1>렌더링 파이프라인 / 컴포지팅 — good</h1>
+
+<div class="panel">
+  <p><strong>바꾼 것:</strong> <!-- 한 줄로 --></p>
+  <p><strong>왜 효과가 있는가:</strong> <!-- 메커니즘 --></p>
+</div>
+
+<div class="panel">
+  <button id="run">실행</button>
+  <div id="log"></div>
+</div>
+
+<div id="stage"></div>
+
+<script>
+// ── 측정 하네스 (bad.html과 동일하게 유지할 것) ─────────────────
+// ⚠️ 측정 방식이 다르면 비교가 무의미해진다.
+
+const log = (msg) => {
+  document.getElementById('log').textContent += msg + '\n';
+  console.log(msg);
+};
+
+function measure(name, fn) {
+  performance.mark(`${name}-start`);
+  const result = fn();
+  performance.mark(`${name}-end`);
+  const m = performance.measure(name, `${name}-start`, `${name}-end`);
+  log(`${name}: ${m.duration.toFixed(2)}ms`);
+  return result;
+}
+
+function watchFPS(seconds = 3) {
+  let frames = 0;
+  const start = performance.now();
+  return new Promise((resolve) => {
+    const tick = () => {
+      frames++;
+      if (performance.now() - start < seconds * 1000) {
+        requestAnimationFrame(tick);
+      } else {
+        const fps = frames / seconds;
+        log(`평균 FPS: ${fps.toFixed(1)}`);
+        resolve(fps);
+      }
+    };
+    requestAnimationFrame(tick);
+  });
+}
+
+// ── 개선 코드 ─────────────────────────────────────────────────
+
+document.getElementById('run').addEventListener('click', () => {
+  document.getElementById('log').textContent = '';
+
+  // TODO: 내가 고친 코드
+});
+
+</script>
+</body>
+</html>
